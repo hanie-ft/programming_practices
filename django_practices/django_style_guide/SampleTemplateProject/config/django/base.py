@@ -18,6 +18,8 @@ LOCAL_APPS = [
     'sampletemplateproject.common.apps.CommonConfig',
     'sampletemplateproject.users.apps.UsersConfig',
     'sampletemplateproject.authentication.apps.AuthenticationConfig',
+    'sampletemplateproject.blog.apps.BlogConfig',
+
 ]
 
 THIRD_PARTY_APPS = [
