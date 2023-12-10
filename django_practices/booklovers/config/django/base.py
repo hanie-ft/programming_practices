@@ -15,7 +15,8 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
 # Application definition
 LOCAL_APPS = [
     'booklovers.core.apps.CoreConfig',
-    'booklovers.common.apps.CommonConfig'
+    'booklovers.common.apps.CommonConfig',
+    'booklovers.books.apps.BooksConfig',
 ]
 
 THIRD_PARTY_APPS = [
