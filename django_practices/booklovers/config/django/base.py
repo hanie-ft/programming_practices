@@ -161,6 +161,8 @@ CACHE_TTL = 60 * 15
 APP_DOMAIN = env("APP_DOMAIN", default="http://localhost:8000")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+AUTH_USER_MODEL = 'users.CustomUser'
+
 
 from config.settings.cors import *  # noqa
 from config.settings.jwt import *  # noqa
