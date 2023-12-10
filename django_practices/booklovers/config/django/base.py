@@ -17,6 +17,7 @@ LOCAL_APPS = [
     'booklovers.core.apps.CoreConfig',
     'booklovers.common.apps.CommonConfig',
     'booklovers.books.apps.BooksConfig',
+    'booklovers.users.apps.UsersConfig',
 ]
 
 THIRD_PARTY_APPS = [
