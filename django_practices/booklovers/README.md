@@ -6,7 +6,7 @@
     Use this to setup the project.
 
 
-[TODO List](todo.md)
+[TODO List](TODO.md)
     
     Use this list to keep track of the progress.
 
