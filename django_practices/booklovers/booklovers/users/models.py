@@ -75,3 +75,16 @@ class CustomUser(AbstractBaseUser, BaseModel, PermissionsMixin):
     def is_staff(self):
         return self.is_admin
 
+
+class Profile(BaseModel):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    connection_count = models.PositiveIntegerField(default=0)
+    bio = models.CharField(max_length=1000, null=True, blank=True)
+    profile_picture = models.ImageField(blank=True)
+    user_books_count = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.user.username}, {self.bio}, {self.user_books_count}"
+
+    def username(self):
+        return self.user.username
