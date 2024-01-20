@@ -20,9 +20,9 @@ This is a prioritized list of tasks that need to be completed for the Book Lover
 - **Description:** Develop the user registration and login system to allow readers to create accounts and log in securely.
 - **Status:** In progress
     -  [x] create_model: user
-    -  [x] create_api: register user
-    -  [ ] create_api: show profile
-    -  [ ] create_api: sign in
+    -  [x] create_api: register user and get access/refresh token
+    -  [x] create_api: show profile
+    -  [x] create_api: sign in
     -  [ ] create_api: sign out
 
 ## Task 3: Add Book Details and Reviews Page
