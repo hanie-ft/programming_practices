@@ -13,11 +13,12 @@ from booklovers.users.validators import (
 )
 from django.core.validators import MinLengthValidator
 from drf_spectacular.utils import extend_schema
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class ProfileApi(ApiAuthMixin, APIView):
     class OutPutProfileSerializer(serializers.ModelSerializer):
-        username = serializers.CharField(read_only = True)
+        username = serializers.CharField(read_only=True)
 
         class Meta:
             model = Profile
@@ -32,7 +33,9 @@ class ProfileApi(ApiAuthMixin, APIView):
     @extend_schema(responses=OutPutProfileSerializer)
     def get(self, request):
         query = get_profile(user=request.user)
-        return Response(self.OutPutProfileSerializer(query, context={"request": request}).data)
+        return Response(
+            self.OutPutProfileSerializer(query, context={"request": request}).data
+        )
 
 
 class RegisterUserApi(APIView):
@@ -51,9 +54,22 @@ class RegisterUserApi(APIView):
         confirm_password = serializers.CharField(max_length=255)
 
     class OutPutRegisterSerializer(serializers.ModelSerializer):
+        token = serializers.SerializerMethodField("get_token")
+
         class Meta:
             model = CustomUser
-            fields = ("username", "created_at", "updated_at")
+            fields = ("username", "token", "created_at", "updated_at")
+
+        def get_token(self, user):
+            data = dict()
+            token_class = RefreshToken
+
+            refresh = token_class.for_user(user)
+
+            data["refresh"] = str(refresh)
+            data["access"] = str(refresh.access_token)
+
+            return data
 
     def validate_email(self, email):
         if CustomUser.objects.filter(email=email).exists():
